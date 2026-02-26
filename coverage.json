@@ -1,0 +1,109 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T02:38:03.735Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 5,
+    "implemented": 5,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Redesign the overall layout to a mobile-first, app-like experience: constrain the max width to a phone-sized viewport (max-w-sm or ~390px) centered on desktop, remove the top header navigation bar and replace it with a bottom tab bar (Home, Explore, Upload, Profile) styled like a native mobile app tab bar with icons and labels.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/components/BottomTabBar.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/App.tsx",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Update the TikTok-style vertical video feed (HomePage) to fill the full mobile viewport height using 100dvh per card, with touch-friendly swipe scroll-snap behavior that mimics native mobile short-video apps.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/VideoCard.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/components/VideoCard.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-12",
+        "summary": "Convert the Upload page to a mobile-native-style full-screen sheet: use a large tap target for file selection, full-width inputs, and a prominent upload CTA button styled for touch interaction. Fix the video upload flow so that file selection, validation, chunked upload, and success/error feedback all work correctly end-to-end.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/UploadPage.tsx",
+          "frontend/src/components/UploadProgress.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/UploadPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-13",
+        "summary": "Update the comments panel to render as a native-style bottom drawer/sheet that slides up from the bottom of the phone-width container, with a drag handle, backdrop dimming, and a fixed comment input pinned above the keyboard.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CommentsPanel.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CommentsPanel.tsx",
+          "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-14",
+        "summary": "Update the Profile and Explore pages to use full-width, mobile-optimized layouts: full-width profile header, stacked stats row, and a 2-column video grid that fills the phone-width container without horizontal overflow.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ProfileHeader.tsx",
+          "frontend/src/components/VideoGrid.tsx",
+          "frontend/src/pages/ProfilePage.tsx",
+          "frontend/src/pages/ExplorePage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProfileHeader.tsx",
+          "frontend/src/components/VideoGrid.tsx",
+          "frontend/src/pages/ProfilePage.tsx",
+          "frontend/src/pages/ExplorePage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/components/CommentsPanel.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/ProfileHeader.tsx",
+    "frontend/src/components/VideoCard.tsx",
+    "frontend/src/components/VideoGrid.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/ExplorePage.tsx",
+    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/ProfilePage.tsx",
+    "frontend/src/pages/UploadPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

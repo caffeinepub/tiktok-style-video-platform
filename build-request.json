@@ -1,0 +1,122 @@
+{
+  "kind": "build_request",
+  "title": "Convert VibeReel web app to mobile-first app experience",
+  "projectName": "VibeReel",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "text": "Redesign the overall layout to a mobile-first, app-like experience: constrain the max width to a phone-sized viewport (max-w-sm or ~390px) centered on desktop, remove the top header navigation bar and replace it with a bottom tab bar (Home, Explore, Upload, Profile) styled like a native mobile app tab bar with icons and labels.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "convert web to App"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The app renders in a centered, phone-width container (≤390px wide) on desktop screens",
+        "A persistent bottom tab bar replaces the top header for primary navigation",
+        "Bottom tab bar has four tabs: Home, Explore, Upload, and Profile, each with an icon and label",
+        "Active tab is visually highlighted",
+        "The top header bar is removed or reduced to a minimal branding-only strip"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Update the TikTok-style vertical video feed (HomePage) to fill the full mobile viewport height using 100dvh per card, with touch-friendly swipe scroll-snap behavior that mimics native mobile short-video apps.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "convert web to App"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each video card occupies exactly 100dvh height within the phone-width container",
+        "Scroll-snap is set to mandatory with y-axis snapping",
+        "Swiping up/down smoothly transitions between videos",
+        "Video auto-play and pause-on-scroll-out behavior is preserved"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Convert the Upload page to a mobile-native-style full-screen sheet: use a large tap target for file selection, full-width inputs, and a prominent upload CTA button styled for touch interaction. Fix the video upload flow so that file selection, validation, chunked upload, and success/error feedback all work correctly end-to-end.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "He is not working please convert web to App"
+        ]
+      },
+      "acceptanceCriteria": [
+        "File picker opens on tap of a large, clearly labeled area",
+        "Title and description inputs are full-width and touch-friendly",
+        "Upload button is prominent and disabled while upload is in progress",
+        "Upload progress bar is visible during chunked upload",
+        "Success and error states are clearly communicated via toast or inline message",
+        "A video file can be selected, titled, described, and successfully uploaded to the backend without errors"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Update the comments panel to render as a native-style bottom drawer/sheet that slides up from the bottom of the phone-width container, with a drag handle, backdrop dimming, and a fixed comment input pinned above the keyboard.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "convert web to App"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Comments panel slides up from the bottom with a smooth animation",
+        "A visible drag handle is shown at the top of the panel",
+        "A semi-transparent backdrop dims the video behind the panel",
+        "The comment input field is pinned to the bottom of the panel",
+        "The panel can be dismissed by tapping the backdrop or swiping down"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Update the Profile and Explore pages to use full-width, mobile-optimized layouts: full-width profile header, stacked stats row, and a 2-column video grid that fills the phone-width container without horizontal overflow.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "convert web to App"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Profile header spans full width with avatar, username, bio, and stats in a mobile-friendly stacked layout",
+        "Video grid on Profile and Explore pages uses exactly 2 columns within the phone-width container",
+        "No horizontal scrollbar or overflow appears at any viewport size",
+        "All touch targets (buttons, grid items) are at least 44×44px"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify files under frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, or frontend/src/components/ui",
+    "All Motoko logic must remain in backend/main.mo",
+    "Preserve all existing features: authentication, video feed, upload, profiles, explore, comments, likes, and follows"
+  ],
+  "nonGoals": [
+    "Publishing to Apple App Store or Google Play Store",
+    "Converting to React Native or any native mobile framework",
+    "Adding new backend features or data models beyond fixing the upload flow",
+    "Changing the Internet Identity authentication mechanism"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

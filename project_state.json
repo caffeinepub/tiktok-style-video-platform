@@ -1,0 +1,177 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "A TikTok-style social video sharing platform where users can upload and share short videos up to 10 minutes long. The user wants to convert the web platform into a mobile app.",
+  "architectural_notes": [
+    "Video uploads should support up to 10-minute duration limit enforced on client and server",
+    "Vertical scrolling feed (full-screen video auto-play) as primary UI pattern",
+    "Platform should be converted from web to a mobile app experience"
+  ],
+  "known_issues": [
+    "Video upload is not working on the website (user reported inability to upload videos)",
+    "Video upload fix (Version 2) is still not working according to user"
+  ],
+  "isFixRequest": true,
+  "existing_features": [
+    {
+      "id": "feature-implement-internet-identity-based-authentication-users-must-log-in-before-uploading-videos-liking-commenting-or-following-show-a-login-prompt-for-unauthenticated-users-attempting-these-actions",
+      "title": "Implement Internet Identity-based authentication. Users must log in before uploading videos, liking, commenting, or following. Show a login prompt for unauthenticated users attempting these actions.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-a-tiktok-style-vertical-full-screen-scrolling-video-feed-as-the-main-home-page-videos-auto-play-when-scrolled-into-view-and-pause-when-out-of-view-each-video-card-shows-the-uploader-s-username-video-title-description-like-count-comment-count-and-action-buttons-like-comment-share-follow",
+      "title": "Build a TikTok-style vertical full-screen scrolling video feed as the main home page. Videos auto-play when scrolled into view and pause when out of view. Each video card shows the uploader's username, video title/description, like count, comment count, and action buttons (like, comment, share, follow).",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-video-upload-functionality-users-can-upload-a-video-file-with-a-title-and-description-enforce-a-maximum-video-duration-of-10-minutes-600-seconds-on-both-frontend-and-backend-display-upload-progress-and-validation-errors",
+      "title": "Implement video upload functionality. Users can upload a video file with a title and description. Enforce a maximum video duration of 10 minutes (600 seconds) on both frontend and backend. Display upload progress and validation errors.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-user-profile-pages-showing-the-user-s-avatar-username-bio-follower-count-following-count-and-a-grid-of-their-uploaded-videos-include-a-follow-unfollow-button-for-other-users-profiles",
+      "title": "Build user profile pages showing the user's avatar, username, bio, follower count, following count, and a grid of their uploaded videos. Include a follow/unfollow button for other users' profiles.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-an-explore-discover-page-showing-trending-and-recent-videos-in-a-grid-layout-support-browsing-without-authentication",
+      "title": "Build an Explore/Discover page showing trending and recent videos in a grid layout. Support browsing without authentication.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-comments-panel-for-each-video-authenticated-users-can-post-comments-all-users-can-read-comments-sorted-by-most-recent-first",
+      "title": "Implement a comments panel for each video. Authenticated users can post comments. All users can read comments sorted by most recent first.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-bold-modern-dark-theme-visual-design-inspired-by-short-form-video-platforms-use-a-near-black-background-high-contrast-white-text-vivid-accent-colors-red-coral-for-likes-actions-clean-sans-serif-typography-and-smooth-scroll-snap-interactions-maintain-this-theme-consistently-across-all-pages-and-components",
+      "title": "Apply a bold, modern dark-theme visual design inspired by short-form video platforms. Use a near-black background, high-contrast white text, vivid accent colors (red/coral for likes/actions), clean sans-serif typography, and smooth scroll snap interactions. Maintain this theme consistently across all pages and components.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-diagnose-and-fix-the-video-upload-flow-so-that-authenticated-users-can-successfully-select-a-video-file-fill-in-title-and-description-and-complete-the-upload-to-the-backend-without-errors-this-includes-fixing-any-issues-in-the-uploadpage-component-the-upload-mutation-in-usequeries-ts-and-the-backend-uploadvideo-handler-in-main-mo",
+      "title": "Diagnose and fix the video upload flow so that authenticated users can successfully select a video file, fill in title and description, and complete the upload to the backend without errors. This includes fixing any issues in the UploadPage component, the upload mutation in useQueries.ts, and the backend uploadVideo handler in main.mo.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-overall-layout-to-a-mobile-first-app-like-experience-constrain-the-max-width-to-a-phone-sized-viewport-max-w-sm-or-390px-centered-on-desktop-remove-the-top-header-navigation-bar-and-replace-it-with-a-bottom-tab-bar-home-explore-upload-profile-styled-like-a-native-mobile-app-tab-bar-with-icons-and-labels",
+      "title": "Redesign the overall layout to a mobile-first, app-like experience: constrain the max width to a phone-sized viewport (max-w-sm or ~390px) centered on desktop, remove the top header navigation bar and replace it with a bottom tab bar (Home, Explore, Upload, Profile) styled like a native mobile app tab bar with icons and labels.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-tiktok-style-vertical-video-feed-homepage-to-fill-the-full-mobile-viewport-height-using-100dvh-per-card-with-touch-friendly-swipe-scroll-snap-behavior-that-mimics-native-mobile-short-video-apps",
+      "title": "Update the TikTok-style vertical video feed (HomePage) to fill the full mobile viewport height using 100dvh per card, with touch-friendly swipe scroll-snap behavior that mimics native mobile short-video apps.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-convert-the-upload-page-to-a-mobile-native-style-full-screen-sheet-use-a-large-tap-target-for-file-selection-full-width-inputs-and-a-prominent-upload-cta-button-styled-for-touch-interaction-fix-the-video-upload-flow-so-that-file-selection-validation-chunked-upload-and-success-error-feedback-all-work-correctly-end-to-end",
+      "title": "Convert the Upload page to a mobile-native-style full-screen sheet: use a large tap target for file selection, full-width inputs, and a prominent upload CTA button styled for touch interaction. Fix the video upload flow so that file selection, validation, chunked upload, and success/error feedback all work correctly end-to-end.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-comments-panel-to-render-as-a-native-style-bottom-drawer-sheet-that-slides-up-from-the-bottom-of-the-phone-width-container-with-a-drag-handle-backdrop-dimming-and-a-fixed-comment-input-pinned-above-the-keyboard",
+      "title": "Update the comments panel to render as a native-style bottom drawer/sheet that slides up from the bottom of the phone-width container, with a drag handle, backdrop dimming, and a fixed comment input pinned above the keyboard.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-profile-and-explore-pages-to-use-full-width-mobile-optimized-layouts-full-width-profile-header-stacked-stats-row-and-a-2-column-video-grid-that-fills-the-phone-width-container-without-horizontal-overflow",
+      "title": "Update the Profile and Explore pages to use full-width, mobile-optimized layouts: full-width profile header, stacked stats row, and a 2-column video grid that fills the phone-width container without horizontal overflow.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Video upload and sharing with max 10-minute duration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "TikTok-style vertical scrolling video feed",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "User profiles and follow/unfollow system",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Like, comment, and share functionality on videos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Explore/discover page with trending videos",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "User authentication (sign up, login, logout)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Implement backend data models and logic for users, videos, likes, comments, and follows. Store user profiles (username, bio, avatar URL, follower/following counts), video metadata (title, description, uploader, upload timestamp, duration up to 10 minutes, like count, comment count, view count), comments (text, author, timestamp), and follow relationships. Expose CRUD operations for all entities.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Convert the web platform into a mobile app",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "TikTok-Style Video Platform",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

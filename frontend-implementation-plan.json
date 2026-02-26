@@ -1,0 +1,146 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Convert VibeReel to Mobile-First App Experience",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Redesign overall layout to mobile-first app experience with bottom tab navigation",
+      "acceptanceCriteria": [
+        "The app renders in a centered, phone-width container (≤390px wide) on desktop screens",
+        "A persistent bottom tab bar replaces the top header for primary navigation",
+        "Bottom tab bar has four tabs: Home, Explore, Upload, and Profile, each with an icon and label",
+        "Active tab is visually highlighted",
+        "The top header bar is removed or reduced to a minimal branding-only strip"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap RouterProvider with a mobile viewport container (max-w-sm mx-auto) to constrain the app width to phone-sized viewport on desktop"
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "modify",
+          "description": "Remove or minimize the top header navigation bar to a slim branding strip, relocate the login button to the profile tab or a modal, and ensure the layout accommodates the bottom tab bar with proper spacing"
+        },
+        {
+          "path": "frontend/src/components/BottomTabBar.tsx",
+          "operation": "create",
+          "description": "Create a persistent bottom tab navigation component with four tabs (Home, Explore, Upload, Profile) using lucide-react icons (Home, Compass, PlusCircle, User), labels, and active state highlighting via TanStack Router's useRouterState hook"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add mobile-first utility classes for the bottom tab bar styling (fixed positioning, safe-area-inset-bottom for notched devices, backdrop blur), and ensure the body/root container supports the phone-width constraint"
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Update vertical video feed to fill mobile viewport with touch-friendly scroll-snap",
+      "acceptanceCriteria": [
+        "Each video card occupies exactly 100dvh height within the phone-width container",
+        "Scroll-snap is set to mandatory with y-axis snapping",
+        "Swiping up/down smoothly transitions between videos",
+        "Video auto-play and pause-on-scroll-out behavior is preserved"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Update the feed container to use snap-y snap-mandatory scroll-snap-type, ensure each VideoCard wrapper div uses h-dvh and snap-start, and verify IntersectionObserver thresholds work correctly with the new scroll-snap behavior"
+        },
+        {
+          "path": "frontend/src/components/VideoCard.tsx",
+          "operation": "modify",
+          "description": "Update the card container to fill exactly 100dvh height, adjust video positioning to center within the mobile viewport, ensure action buttons and overlay elements are touch-optimized (min 44px touch targets), and verify auto-play/pause logic is preserved"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add or refine scroll-snap utilities for smooth y-axis snapping, ensure dvh units are supported, and add touch-action CSS rules to prevent unwanted horizontal swipes"
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Convert Upload page to mobile-native full-screen sheet with working upload flow",
+      "acceptanceCriteria": [
+        "File picker opens on tap of a large, clearly labeled area",
+        "Title and description inputs are full-width and touch-friendly",
+        "Upload button is prominent and disabled while upload is in progress",
+        "Upload progress bar is visible during chunked upload",
+        "Success and error states are clearly communicated via toast or inline message",
+        "A video file can be selected, titled, described, and successfully uploaded to the backend without errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/UploadPage.tsx",
+          "operation": "modify",
+          "description": "Redesign the upload form as a full-screen mobile sheet: replace small file input with a large tap-target area (e.g., a dashed border box with icon and label), make title and description inputs full-width with touch-friendly padding, ensure the upload button is prominent and disabled during upload, verify the chunked upload flow (file selection → validation → ExternalBlob.fromBytes with progress callback → uploadVideo mutation) works end-to-end, and use toast notifications for success/error feedback. Verify the blob-storage component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/UploadProgress.tsx",
+          "operation": "modify",
+          "description": "Ensure the progress bar is visually prominent and mobile-friendly, with clear status labels and icons for each upload stage (validating, uploading, processing, success, error)"
+        }
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "summary": "Update comments panel to native-style bottom drawer with drag handle and backdrop",
+      "acceptanceCriteria": [
+        "Comments panel slides up from the bottom with a smooth animation",
+        "A visible drag handle is shown at the top of the panel",
+        "A semi-transparent backdrop dims the video behind the panel",
+        "The comment input field is pinned to the bottom of the panel",
+        "The panel can be dismissed by tapping the backdrop or swiping down"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CommentsPanel.tsx",
+          "operation": "modify",
+          "description": "Convert the comments panel to a mobile-native bottom drawer: add a drag handle at the top, implement slide-up animation using CSS transitions or framer-motion, add a semi-transparent backdrop overlay that dims the video and dismisses the panel on tap, pin the CommentInput to the bottom of the panel above the keyboard using sticky positioning or a fixed footer, and optionally support swipe-down-to-dismiss gestures"
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add utility classes or animations for the bottom drawer slide-up effect, backdrop dimming (e.g., bg-black/60), and drag handle styling"
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Update Profile and Explore pages to mobile-optimized full-width layouts with 2-column video grid",
+      "acceptanceCriteria": [
+        "Profile header spans full width with avatar, username, bio, and stats in a mobile-friendly stacked layout",
+        "Video grid on Profile and Explore pages uses exactly 2 columns within the phone-width container",
+        "No horizontal scrollbar or overflow appears at any viewport size",
+        "All touch targets (buttons, grid items) are at least 44×44px"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProfileHeader.tsx",
+          "operation": "modify",
+          "description": "Redesign the profile header to a full-width mobile layout: stack the avatar, username, bio, and stats vertically, ensure the Edit Profile and Follow buttons are full-width or prominent touch targets (≥44px height), and remove any desktop-specific multi-column layout"
+        },
+        {
+          "path": "frontend/src/components/VideoGrid.tsx",
+          "operation": "modify",
+          "description": "Update the grid to always render exactly 2 columns (grid-cols-2) within the phone-width container, remove responsive column breakpoints (sm:, md:, lg:), ensure video thumbnails and interactive elements have touch-friendly spacing (gap-2 or gap-3), and verify no horizontal overflow occurs"
+        },
+        {
+          "path": "frontend/src/pages/ProfilePage.tsx",
+          "operation": "modify",
+          "description": "Verify the ProfileHeader and VideoGrid integration works correctly with the mobile-optimized layouts, ensure full-width rendering within the phone-width container, and test that the page scrolls smoothly without horizontal overflow"
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "modify",
+          "description": "Update the Explore page layout to mobile-first: ensure the search bar and sort controls are full-width and touch-friendly, verify the VideoGrid renders with the 2-column mobile layout, and ensure no horizontal overflow occurs"
+        }
+      ]
+    }
+  ]
+}
